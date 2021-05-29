@@ -14,11 +14,12 @@ function Header() {
         {/* Left corner logo */}
         <div className="mt-2 flex items-center flex-grow sm:flex-grow-0">
           <Image
-            src="https://links.papareact.com/f90"
+            src="https://i.postimg.cc/TPdpjPLv/logo.png"
             width={150}
             height={40}
             objectFit="contain"
             className="cursor-pointer"
+            alt="Logo"
           />
         </div>
 

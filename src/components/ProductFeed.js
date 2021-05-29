@@ -18,9 +18,9 @@ function ProductFeed({ products }) {
         ))}
 
       <img
-        className="md:col-span-full max-w-screen-2xl mx-auto"
-        src="https://links.papareact.com/dyz"
-        alt=""
+        className="md:col-span-full max-w-screen-2xl w-full px-5 mx-auto"
+        src="https://i.postimg.cc/h4z16KMq/ads.jpg"
+        alt="Ads Banner"
       />
 
       <div className="md:col-span-2">
