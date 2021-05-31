@@ -16,7 +16,7 @@ function Header() {
   const totalItems = useSelector(selectTotalItems)
 
   return (
-    <header>
+    <header className="z-50 sticky top-0">
       {/* Top Nav */}
       <div className="flex items-center bg-amazon_blue p-1 flex-grow py-2">
         {/* Left corner logo */}
