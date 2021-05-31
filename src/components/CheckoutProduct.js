@@ -1,8 +1,13 @@
 import Image from "next/image"
 import { StarIcon } from "@heroicons/react/solid"
+import { TrashIcon } from "@heroicons/react/outline"
 import Currency from "react-currency-formatter"
 import { useDispatch } from "react-redux"
-import { addToBasket, removeFromBasket } from "../slices/basketSlice"
+import {
+  addToBasket,
+  removeFromBasket,
+  deleteFromBasket,
+} from "../slices/basketSlice"
 
 function CheckoutProduct({
   id,
@@ -13,7 +18,9 @@ function CheckoutProduct({
   category,
   image,
   hasPrime,
+  quantity,
 }) {
+  console.log(id, quantity)
   const dispatch = useDispatch()
 
   const addItemToBasket = () => {
@@ -35,11 +42,14 @@ function CheckoutProduct({
     dispatch(removeFromBasket({ id }))
   }
 
+  const deleteItemFromBasket = () => {
+    dispatch(deleteFromBasket({ id }))
+  }
+
   return (
     <div className="grid grid-cols-5">
       <Image src={image} height={200} width={200} objectFit="contain" />
 
-      {/* Middle */}
       <div className="col-span-3 mx-5">
         <p>{title}</p>
         <div className="flex">
@@ -65,14 +75,26 @@ function CheckoutProduct({
         )}
       </div>
 
-      {/* Right */}
-      <div className="flex flex-col space-y-2 my-auto justify-self-end">
-        <button className="button" onClick={addItemToBasket}>
-          Add to Basket
+      <div className="flex justify-self-end space-x-3 items-center xl:mb-12">
+        <button
+          className="plusminus-button w-8 h-6 flex items-center justify-center bg-transparent"
+          onClick={removeItemFromBasket}
+        >
+          -
         </button>
-        <button className="button" onClick={removeItemFromBasket}>
-          Remove to Basket
+        <p>{quantity}</p>
+        <button
+          className="plusminus-button w-8 h-6 flex items-center justify-center bg-transparent"
+          onClick={addItemToBasket}
+        >
+          +
         </button>
+        <div
+          className="hidden md:inline-flex cursor-pointer"
+          onClick={deleteItemFromBasket}
+        >
+          <TrashIcon className="w-4 h-4" />
+        </div>
       </div>
     </div>
   )
