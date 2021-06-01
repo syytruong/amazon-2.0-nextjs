@@ -16,7 +16,6 @@ function checkout() {
       <Header />
 
       <main className="lg:flex max-w-screen-2xl mx-auto">
-        {/* Left */}
         <div className="flex-grow m-5 shadow-sm">
           <Image
             src="https://i.postimg.cc/jjYB8hnp/Prime-day-banner.png"
@@ -47,7 +46,6 @@ function checkout() {
           </div>
         </div>
 
-        {/* Right */}
         <div className="flex flex-col bg-white p-10 shadow-md">
           {items.length > 0 && (
             <>

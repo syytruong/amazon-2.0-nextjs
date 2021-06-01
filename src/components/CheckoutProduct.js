@@ -75,7 +75,7 @@ function CheckoutProduct({
         )}
       </div>
 
-      <div className="flex justify-self-end space-x-3 items-center xl:mb-12">
+      <div className="flex justify-self-end space-x-2 items-center xl:mb-12">
         <button
           className="plusminus-button w-8 h-6 flex items-center justify-center bg-transparent"
           onClick={removeItemFromBasket}
