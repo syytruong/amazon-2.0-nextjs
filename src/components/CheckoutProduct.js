@@ -20,7 +20,6 @@ function CheckoutProduct({
   hasPrime,
   quantity,
 }) {
-  console.log(id, quantity)
   const dispatch = useDispatch()
 
   const addItemToBasket = () => {

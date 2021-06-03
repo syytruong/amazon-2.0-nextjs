@@ -22,8 +22,6 @@ export const basketSlice = createSlice({
         product.quantity = 1
         state.items = [...state.items, product]
       }
-
-      console.log(state.items)
     },
     removeFromBasket: (state, action) => {
       const index = state.items.findIndex(
