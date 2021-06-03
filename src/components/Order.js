@@ -3,6 +3,15 @@ import moment from "moment"
 import Currency from "react-currency-formatter"
 
 function Order({ id, amount, amountShipping, items, timestamp, images }) {
+  const totalItems = items.reduce((total, item) => {
+    return total + item.quantity
+  }, 0)
+
+  const pairedDatas = items.map((item, i) => ({
+    image: images[i],
+    quantity: item.quantity,
+  }))
+
   return (
     <div className="relative border rounded-md">
       <div className="flex items-center space-x-10 p-5 bg-gray-100 text-sm text-gray-600">
@@ -20,7 +29,7 @@ function Order({ id, amount, amountShipping, items, timestamp, images }) {
         </div>
 
         <p className="text-sm whitespace-nowrap sm:text-xl self-end flex-1 text-right text-blue-500">
-          {items.length} items
+          {totalItems} items
         </p>
 
         <p className="absolute top-2 right-2 w-40 lg:w-72 truncate text-xs whitespace-nowrap">
@@ -30,8 +39,24 @@ function Order({ id, amount, amountShipping, items, timestamp, images }) {
 
       <div className="p-5 sm:p-10">
         <div className="flex space-x-6 overflow-x-auto">
-          {images.map(image => (
-            <img src={image} alt="" className="h-20 object-contain sm:h-32" />
+          {pairedDatas.map(pairedData => (
+            <div
+              className="grid grid-rows-4"
+              key={`${id}${JSON.stringify(pairedData.image)}`}
+            >
+              <img
+                src={pairedData.image}
+                alt=""
+                className="h-20 object-contain sm:h-32 row-span-3"
+                key={JSON.stringify(pairedData.image)}
+              />
+              <p
+                className="text-xs self-end justify-self-center"
+                key={`qty${JSON.stringify(pairedData.image)}`}
+              >
+                Qty: {pairedData.quantity}
+              </p>
+            </div>
           ))}
         </div>
       </div>
