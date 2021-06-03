@@ -13,6 +13,7 @@ import { loadStripe } from "@stripe/stripe-js"
 import axios from "axios"
 
 const stripePromise = loadStripe(process.env.stripe_public_key)
+console.log(stripePromise)
 
 function checkout() {
   const items = useSelector(selectItems)
